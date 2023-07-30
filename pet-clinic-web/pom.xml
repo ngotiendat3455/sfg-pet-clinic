@@ -4,14 +4,14 @@
     <parent>
         <groupId>guru.springframework</groupId>
         <artifactId>sfg-pet-clinic</artifactId>
-        <version>0.0.1</version>
+        <version>0.0.2-SNAPSHOT</version>
     </parent>
 
     <artifactId>pet-clinic-web</artifactId>
     <dependencies>
         <dependency>
             <artifactId>pet-clinic-data</artifactId>
-            <version>0.0.1</version>
+            <version>0.0.2-SNAPSHOT</version>
             <groupId>guru.springframework.sfgpetclinic</groupId>
         </dependency>
 
