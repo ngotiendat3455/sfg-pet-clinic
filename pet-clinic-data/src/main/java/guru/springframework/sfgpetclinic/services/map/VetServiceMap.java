@@ -1,6 +1,6 @@
 package guru.springframework.sfgpetclinic.services.map;
 
-import guru.springframework.sfgpetclinic.model.Speciality;
+import guru.springframework.sfgpetclinic.model.Specialty;
 import guru.springframework.sfgpetclinic.model.Vet;
 import guru.springframework.sfgpetclinic.services.CrudService;
 import guru.springframework.sfgpetclinic.services.SpecialityService;
@@ -30,10 +30,10 @@ public class VetServiceMap extends AbtractMapService<Vet, Long> implements VetSe
     @Override
     public Vet save(Vet object) {
         if(object != null) {
-            object.getSpecialities().forEach(speciality -> {
+            object.getSpecialties().forEach(speciality -> {
                 if(speciality.getId() == null){
-                    Speciality speciality1 = specialityService.save(speciality);
-                    speciality.setId(speciality.getId());
+                    Specialty speciality1 = specialityService.save(speciality);
+                    speciality.setId(speciality1.getId());
                 }
             });
         }

@@ -18,7 +18,7 @@ public class DataLoader implements CommandLineRunner {
     private final PetTypeService petTypeService;
     private final SpecialityService specialityService;
 
-    public DataLoader(OwnerServiceMap ownerService, VetServiceMap vetService, PetTypeMapService petTypeService, SpecialityServiceMap specialityService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialityService specialityService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
@@ -27,22 +27,22 @@ public class DataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        loadData();
+         // loadData();
     }
 
     private void loadData() {
-        Speciality speciality1 = new Speciality();
+        Specialty speciality1 = new Specialty();
         speciality1.setDescription("Speciality 1");
 
-        Speciality speciality2 = new Speciality();
+        Specialty speciality2 = new Specialty();
         speciality2.setDescription("Speciality 2");
 
-        Speciality speciality3 = new Speciality();
+        Specialty speciality3 = new Specialty();
         speciality3.setDescription("Speciality 3");
 
-        Speciality saveSpeciality1 = specialityService.save(speciality1);
-        Speciality saveSpeciality2 = specialityService.save(speciality2);
-        Speciality saveSpeciality3 = specialityService.save(speciality3);
+        Specialty saveSpeciality1 = specialityService.save(speciality1);
+        Specialty saveSpeciality2 = specialityService.save(speciality2);
+        Specialty saveSpeciality3 = specialityService.save(speciality3);
 
         PetType dog = new PetType();
         dog.setName("Dog");
@@ -78,7 +78,7 @@ public class DataLoader implements CommandLineRunner {
         // vet1.setId(1L);
         vet1.setFirstName("vet frist name 1");
         vet1.setLastName("vet frist name 2");
-        vet1.getSpecialities().add(speciality1);
+        vet1.getSpecialties().add(speciality1);
         vetService.save(vet1);
         System.out.println("Loaded vets");
     }
