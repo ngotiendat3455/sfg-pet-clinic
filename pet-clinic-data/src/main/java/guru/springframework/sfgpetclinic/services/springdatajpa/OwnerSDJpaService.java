@@ -18,7 +18,6 @@ import java.util.Set;
 
 @Service
 @Profile("springdatajpa")
-@NoArgsConstructor(force = true)
 public class OwnerSDJpaService implements OwnerService {
     private final OwnerRepository ownerRepository;
     private final PetRepository petRepository;

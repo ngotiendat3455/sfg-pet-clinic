@@ -13,7 +13,6 @@ import java.util.Set;
 
 @Service
 @Profile("springdatajpa")
-@NoArgsConstructor(force = true)
 public class VetSDJpaService implements VetService {
     private final VetRepository vetRepository;
 

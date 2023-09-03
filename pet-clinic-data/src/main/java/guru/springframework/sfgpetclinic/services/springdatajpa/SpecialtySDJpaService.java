@@ -12,7 +12,6 @@ import java.util.Set;
 
 @Service
 @Profile("springdatajpa")
-@NoArgsConstructor(force = true)
 public class SpecialtySDJpaService implements SpecialityService {
     private final SpecialtyRepository specialtyRepository;
 

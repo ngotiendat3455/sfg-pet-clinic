@@ -12,7 +12,6 @@ import java.util.Set;
 
 @Service
 @Profile("springdatajpa")
-@NoArgsConstructor(force = true)
 public class PetSDJpaService implements PetService {
     private final PetRepository petRepository;
 
