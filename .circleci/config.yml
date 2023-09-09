@@ -21,6 +21,9 @@ jobs:
             MAVEN_OPTS: -Xmx3200m
 
         steps:
+        - add_ssh_keys:
+            fingerprints:
+              - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEZy0Ix50mlmxOKTVYZxCmo59NPiNzp62W+lAlSVIGzC datngotien345@gmail.com"
         - checkout
 
         # Download and cache dependencies
