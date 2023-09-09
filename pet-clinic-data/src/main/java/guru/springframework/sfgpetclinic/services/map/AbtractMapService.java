@@ -16,10 +16,16 @@ public abstract class AbtractMapService <T extends BaseEntity, ID extends Long> 
     };
 
     T save(T object){
-        if(object.getId() == null){
-            object.setId(getNextId());
+        if(object != null) {
+            if(object.getId() == null){
+                object.setId(getNextId());
+            }
+
+            map.put(object.getId(), object);
+        } else {
+            throw new RuntimeException("Object cannot be null");
         }
-        map.put(object.getId(), object);
+
         return object;
     };
 

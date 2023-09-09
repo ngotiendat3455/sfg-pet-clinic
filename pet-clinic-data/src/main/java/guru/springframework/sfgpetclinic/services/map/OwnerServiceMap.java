@@ -1,6 +1,7 @@
 package guru.springframework.sfgpetclinic.services.map;
 
 import guru.springframework.sfgpetclinic.model.Owner;
+import guru.springframework.sfgpetclinic.model.Pet;
 import guru.springframework.sfgpetclinic.services.CrudService;
 import guru.springframework.sfgpetclinic.services.OwnerService;
 import guru.springframework.sfgpetclinic.services.PetService;
@@ -28,7 +29,7 @@ public class OwnerServiceMap extends AbtractMapService<Owner, Long> implements O
 
     @Override
     public Owner findByLastName(String lastName) {
-        return null;
+        return this.findAll().stream().filter(owner -> owner.getLastName().equalsIgnoreCase(lastName)).findFirst().orElse(null);
     }
 
     @Override
@@ -39,18 +40,28 @@ public class OwnerServiceMap extends AbtractMapService<Owner, Long> implements O
     @Override
     public Owner save(Owner object) {
         if(object != null){
-            object.getPets().forEach(pet -> {
-                if(pet.getPetType() != null){
-                    if(pet.getId() == null){
-                        petTypeService.save(pet.getPetType());
+            if (object.getPets() != null) {
+                object.getPets().forEach(pet -> {
+                    if (pet.getPetType() != null){
+                        if(pet.getPetType().getId() == null){
+                            pet.setPetType(petTypeService.save(pet.getPetType()));
+                        }
+                    } else {
+                        throw new RuntimeException("Pet Type is required");
                     }
-                } else {
-                    throw new RuntimeException("Pet Type is required");
-                }
-            });
+
+                    if(pet.getId() == null){
+                        Pet savedPet = petService.save(pet);
+                        pet.setId(savedPet.getId());
+                    }
+                });
+            }
+
             return super.save(object);
-        };
-        throw new RuntimeException("Pet is null");
+
+        } else {
+            return null;
+        }
     };
 
     @Override
